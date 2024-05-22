@@ -22,7 +22,6 @@ public class IniciarSesionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/iniciarSesion.jsp");
-
         dispatcher.forward(request, response);
     }
 
@@ -54,9 +53,9 @@ public class IniciarSesionServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/paginaUsuario.jsp");
             }
         } else {
-            request.setAttribute("error", "Error de validación!");
+            request.setAttribute("error", "Nombre o Contraseña no válidos!");
+            System.out.println("Error");
         }
-
 
 
         dispatcher.forward(request, response);
