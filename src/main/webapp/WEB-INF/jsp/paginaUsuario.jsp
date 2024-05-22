@@ -42,7 +42,7 @@
                 }
                 // Imprimir asteriscos
                 for (int k = 1; k <= (2 * i - 1); k++) {
-%> <img src="../imgs/906.png"> <%
+%> <img src="/imgs/906.png"> <%
                 }
                 // Salto de línea para la siguiente fila
 %></p><%
