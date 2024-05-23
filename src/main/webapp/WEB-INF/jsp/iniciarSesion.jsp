@@ -22,9 +22,6 @@
 <div class="container bg-white sticky-top">
     <div class="row mb-2 border-bottom">
         <div class="col-md-8 h1">Iniciar Sesion</div>
-        <div class="col-md-4 align-self-center" ><form method="get" action="GrabarSociosServlet">
-            <input class="btn btn-primary"  type="submit" value="Crear Socio">
-        </form></div>
     </div>
     <div class="row">
         <div class="col-md-1 h3">ID</div>

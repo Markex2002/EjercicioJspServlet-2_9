@@ -8,21 +8,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Pagina Usuario</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <link rel="stylesheet" type="text/css" href="css/backtop.css" />
 </head>
 <body>
-<h1>Pagina del Usuario</h1>
-
 
 <div class="container bg-light">
+    <h1>Pagina del Usuario</h1>
+    <form action="IniciarSesionServlet">
+        <button type="submit">Volver</button>
+    </form>
+
     <form method="post" action="PintarPiramideServlet">
         <div class="row body mt-2">
-            <div class="col-md-6 align-self-center">Pinta una Pirámide</div>
-            <div class="col-md-6 align-self-center"><label>
+            <div class="col-md-3 align-self-center">Pinta una Pirámide</div>
+            <div class="col-md-9 align-self-center"><label>
                 <input type="number" name="cantidad"/>
             </label></div>
         </div>
-        <div class="col-md-6 align-self-center">
+        <div class="col-md-6 align-self-center py-4">
             <input class="btn btn-primary" type="submit" value="Aceptar">
         </div>
     </form>
@@ -38,11 +44,11 @@
 %><p><%
                 // Imprimir espacios
                 for (int j = cantidad; j > i; j--) {
-    %>&nbsp;&nbsp;&nbsp;<%
+    %><img src="imgs/vacio.png"> <%
                 }
                 // Imprimir asteriscos
                 for (int k = 1; k <= (2 * i - 1); k++) {
-%> <img src="/imgs/906.png"> <%
+%> <img src="imgs/906sm.png"> <%
                 }
                 // Salto de línea para la siguiente fila
 %></p><%

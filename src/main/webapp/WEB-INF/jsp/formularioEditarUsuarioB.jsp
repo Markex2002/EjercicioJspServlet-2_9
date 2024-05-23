@@ -19,22 +19,14 @@
 
 
 <div class="container bg-light">
-  <form method="post" action="EditarSociosServlet">
+  <form method="post" action="EditarUsuariosServlet">
     <div class="row body mt-2">
       <div class="col-md-6 align-self-center">Nombre</div>
       <div class="col-md-6 align-self-center"><input type="text" name="nombre"/></div>
     </div>
     <div class="row body mt-2">
-      <div class="col-md-6 align-self-center">Estatura</div>
-      <div class="col-md-6 align-self-center"><input type="text" name="estatura"/></div>
-    </div>
-    <div class="row body mt-2">
-      <div class="col-md-6 align-self-center">Edad</div>
-      <div class="col-md-6 align-self-center"><input type="text" name="edad"/></div>
-    </div>
-    <div class="row body mt-2">
-      <div class="col-md-6 align-self-center">Localidad</div>
-      <div class="col-md-6 align-self-center"><input type="text" name="localidad"/></div>
+      <div class="col-md-6 align-self-center">Password</div>
+      <div class="col-md-6 align-self-center"><input type="text" name="password"/></div>
     </div>
     <div class="row body mt-2">
       <div class="col-md-6 align-self-center">id</div>

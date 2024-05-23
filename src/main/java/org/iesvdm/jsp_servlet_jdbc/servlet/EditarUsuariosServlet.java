@@ -20,13 +20,13 @@ import java.util.Optional;
 //1A APROX. PATRÓN MVC -> M(dao, model y bbdd), V(jsp) & C(servlet)
 
 //                      v--NOMBRE DEL SERVLET           v--RUTAS QUE ATIENDE, PUEDE SER UN ARRAY {"/GrabarSociosServlet", "/grabar-socio"}
-@WebServlet(name = "EditarSociosServlet", value = "/EditarSociosServlet")
-public class EditarSociosServlet extends HttpServlet {
+@WebServlet(name = "EditarUsuariosServlet", value = "/EditarUsuariosServlet")
+public class EditarUsuariosServlet extends HttpServlet {
 
     //EL SERVLET TIENE INSTANCIADO EL DAO PARA ACCESO A BBDD A LA TABLA SOCIO
     //                                  |
     //                                  V
-    private UsuarioDAO socioDAO = new UsuarioDAOImpl();
+    private UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
     //HTML5 SÓLO SOPORTA GET Y POST
     //FRENTE A API REST UTLIZANDO CÓDIGO DE CLIENTE JS HTTP: GET, POST, PUT, DELETE, PATCH
@@ -40,7 +40,7 @@ public class EditarSociosServlet extends HttpServlet {
         //FIJÉMONOS QUE LA RUTA DE LA JSP HA CAMBIADO A DENTRO DE /WEB-INF/
         //POR LO TANTO NO ES ACCESIBLE DIRECTAMENTE, SÓLO A TRAVÉS DE SERVLET
         //MEDIANTE UN RequestDispatcher ----------------v
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioEditarSocioB.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioEditarUsuarioB.jsp");
 
         //SIEMPRE QUE HACEMOS UN RequestDispatcher DEBE MATERIALIZARSE EN UN forward
         //             --------------------------------------------------------|
@@ -72,10 +72,10 @@ public class EditarSociosServlet extends HttpServlet {
             Usuario usuario = optionalUsuario.get();
 
             //PERSITO EL SOCIO NUEVO EN BBDD
-            this.socioDAO.update(usuario);
+            this.usuarioDAO.update(usuario);
 
             //CARGO TODO EL LISTADO DE SOCIOS DE BBDD CON EL NUEVO
-            List<Usuario> listado = this.socioDAO.getAll();
+            List<Usuario> listado = this.usuarioDAO.getAll();
 
             //PREPARO ATRIBUTO EN EL ÁMBITO DE REQUEST PARA PASAR A JSP EL LISTADO
             //A RENDERIZAR. UTILIZO EL ÁMBITO DEL REQUEST DADO QUE EN EL FORWARD A
@@ -105,7 +105,7 @@ public class EditarSociosServlet extends HttpServlet {
             //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A formularioSocio.jsp
             //                                                                      |
             //                                                                      V
-            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioEditarSocioB.jsp");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioEditarUsuarioB.jsp");
         }
 
 

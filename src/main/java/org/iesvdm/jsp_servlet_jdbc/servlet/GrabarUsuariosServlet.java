@@ -17,13 +17,13 @@ import java.util.Optional;
 //1A APROX. PATRÓN MVC -> M(dao, model y bbdd), V(jsp) & C(servlet)
 
 //                      v--NOMBRE DEL SERVLET           v--RUTAS QUE ATIENDE, PUEDE SER UN ARRAY {"/GrabarSociosServlet", "/grabar-socio"}
-@WebServlet(name = "GrabarSociosServlet", value = "/GrabarSociosServlet")
-public class GrabarSociosServlet extends HttpServlet {
+@WebServlet(name = "GrabarUsuariosServlet", value = "/GrabarUsuariosServlet")
+public class GrabarUsuariosServlet extends HttpServlet {
 
     //EL SERVLET TIENE INSTANCIADO EL DAO PARA ACCESO A BBDD A LA TABLA SOCIO
     //                                  |
     //                                  V
-    private UsuarioDAO socioDAO = new UsuarioDAOImpl();
+    private final UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
     //HTML5 SÓLO SOPORTA GET Y POST
     //FRENTE A API REST UTLIZANDO CÓDIGO DE CLIENTE JS HTTP: GET, POST, PUT, DELETE, PATCH
@@ -37,7 +37,7 @@ public class GrabarSociosServlet extends HttpServlet {
         //FIJÉMONOS QUE LA RUTA DE LA JSP HA CAMBIADO A DENTRO DE /WEB-INF/
         //POR LO TANTO NO ES ACCESIBLE DIRECTAMENTE, SÓLO A TRAVÉS DE SERVLET
         //MEDIANTE UN RequestDispatcher ----------------v
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioSocioB.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioUsuarioB.jsp");
 
         //SIEMPRE QUE HACEMOS UN RequestDispatcher DEBE MATERIALIZARSE EN UN forward
         //             --------------------------------------------------------|
@@ -66,13 +66,37 @@ public class GrabarSociosServlet extends HttpServlet {
         if (optionalSocio.isPresent()) {
 
             //ACCEDO AL VALOR DE OPTIONAL DE SOCIO
-            Usuario usuario = optionalSocio.get();
+            Usuario usuarioInsertar = optionalSocio.get();
 
-            //PERSITO EL SOCIO NUEVO EN BBDD
-            this.socioDAO.create(usuario);
+
 
             //CARGO TODO EL LISTADO DE SOCIOS DE BBDD CON EL NUEVO
-            List<Usuario> listado = this.socioDAO.getAll();
+            List<Usuario> listado = this.usuarioDAO.getAll();
+
+            boolean nombreExiste = false;
+            for (Usuario usuario : listado) {
+                if (usuario.getNombre().equals(usuarioInsertar.getNombre())) {
+                    nombreExiste = true;
+                }
+            }
+
+            if (nombreExiste) {
+                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioUsuarioB.jsp");
+                request.setAttribute("error", "Nombre de usuario ya existe!");
+            } else {
+                //PERSITO EL SOCIO NUEVO EN BBDD
+                this.usuarioDAO.create(usuarioInsertar);
+
+                //ESTABLEZCO EL ATRIBUTO DE newSocioID EN EL ÁMBITO DE REQUEST
+                //PARA LANZAR UN MODAL Y UN EFECTO SCROLL EN LA VISTA JSP
+                request.setAttribute("newSocioID", usuarioInsertar.getUsuarioId());
+
+                //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A pideNumeroSocio.jsp
+                //                                                                      |
+                //                                                                      V
+                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoUsuariosB.jsp");
+            }
+
 
             //PREPARO ATRIBUTO EN EL ÁMBITO DE REQUEST PARA PASAR A JSP EL LISTADO
             //A RENDERIZAR. UTILIZO EL ÁMBITO DEL REQUEST DADO QUE EN EL FORWARD A
@@ -83,14 +107,6 @@ public class GrabarSociosServlet extends HttpServlet {
             //                                  V
             request.setAttribute("listado", listado);
 
-            //ESTABLEZCO EL ATRIBUTO DE newSocioID EN EL ÁMBITO DE REQUEST
-            //PARA LANZAR UN MODAL Y UN EFECTO SCROLL EN LA VISTA JSP
-            request.setAttribute("newSocioID", usuario.getUsuarioId() );
-
-            //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A pideNumeroSocio.jsp
-            //                                                                      |
-            //                                                                      V
-            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoUsuariosB.jsp");
         } else {
 
             //El OPTIONAL ESTÁ VACÍO (EMPTY)
@@ -102,7 +118,7 @@ public class GrabarSociosServlet extends HttpServlet {
             //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A formularioSocio.jsp
             //                                                                      |
             //                                                                      V
-            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioSocioB.jsp");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioUsuarioB.jsp");
         }
 
 

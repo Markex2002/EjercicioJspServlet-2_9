@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `baloncesto`
 --
+DROP DATABASE IF EXISTS `DB_jspEjercicio2_9`;
 CREATE DATABASE IF NOT EXISTS `DB_jspEjercicio2_9` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `DB_jspEjercicio2_9`;
 
@@ -31,7 +32,7 @@ USE `DB_jspEjercicio2_9`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `usuarioID` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `password` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `password` varchar(200) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`usuarioID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -41,10 +42,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`usuarioID`, `nombre`, `password`) VALUES
 (1235, 'admin', 'admin'),
-(1236, 'usuario1', '1234'),
-(1237, 'usuario2', '1234'),
-(1238, 'usuario3', '1234'),
-(1239, 'usuario4', '1234');
+(1236, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(1237, 'usuario1', '1234'),
+(1238, 'usuario2', '1234'),
+(1239, 'usuario3', '1234'),
+(1240, 'usuario4', '1234');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

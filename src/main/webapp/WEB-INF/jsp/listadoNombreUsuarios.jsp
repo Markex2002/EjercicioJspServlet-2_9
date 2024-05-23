@@ -22,12 +22,6 @@
 <div class="container bg-white sticky-top">
     <div class="row mb-2 border-bottom">
         <div class="col-md-8 h1">Listado de Usuarios</div>
-        <form class="col-md-2 align-self-center" action="IniciarSesionServlet">
-            <button type="submit">Volver</button>
-        </form>
-        <div class="col-md-2 align-self-center" ><form method="get" action="GrabarUsuariosServlet">
-            <input class="btn btn-primary"  type="submit" value="Crear Socio">
-        </form></div>
     </div>
     <div class="row">
         <div class="col-md-1 h3">ID</div>
@@ -40,7 +34,7 @@
 <div class="container bg-light">
     <%
     //                                                          v----RECOGER listado DE SOCIO DEL request
-    List<Usuario> listado = (List<Usuario>) request.getAttribute("listado");
+    List<Usuario> listado = (List<Usuario>) request.getAttribute("usuariosEncontrados");
     // FOR-EACH SOBRE LA COLECCIÓN DE listado DE SOCIO
     for (Usuario usuario : listado) {
     %>
@@ -67,15 +61,6 @@
       //v--- FIN DEL BUCLE FOR CON HTML INCRUSTADO
     } // for
     %>
-
-
-    <hr>
-
-    <h2>Buscar Usuario</h2>
-    <form method="post" action="BuscarUsuarioServlet" class="row mt-2 my-4">
-        <label class="col-4"><input type="text" name="nombre"></label>
-        <input class="col-2" type="submit">
-    </form>
 </div>
 
 <script type="text/javascript" src="js/jquery.js" ></script>

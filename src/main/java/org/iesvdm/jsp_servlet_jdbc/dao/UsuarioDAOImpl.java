@@ -1,7 +1,9 @@
 package org.iesvdm.jsp_servlet_jdbc.dao;
 
 import org.iesvdm.jsp_servlet_jdbc.model.Usuario;
+import org.iesvdm.jsp_servlet_jdbc.servlet.UtilServlet;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,6 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
         try {
             conn = connectDB();
 
-
             //1 alternativas comentadas:
             //Ver también, AbstractDAOImpl.executeInsert ...
             //Columna fabricante.codigo es clave primaria auto_increment, por ese motivo se omite de la sentencia SQL INSERT siguiente.
@@ -27,7 +28,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
 
             int idx = 1;
             ps.setString(idx++, usuario.getNombre());
-            ps.setString(idx++, usuario.getPassword());
+            ps.setString(idx, UtilServlet.hashPassword(usuario.getPassword()));
 
             int rows = ps.executeUpdate();
             if (rows == 0)
@@ -39,6 +40,8 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
 
         } catch (SQLException | ClassNotFoundException  e) {
             e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         } finally {
             closeDb(conn, ps, rs);
         }

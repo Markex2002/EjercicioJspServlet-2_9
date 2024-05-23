@@ -12,17 +12,18 @@ import org.iesvdm.jsp_servlet_jdbc.model.Usuario;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "IniciarSesionServlet", value = "/IniciarSesionServlet")
-public class IniciarSesionServlet extends HttpServlet {
+@WebServlet(name = "BuscarUsuarioServlet", value = "/BuscarUsuarioServlet")
+public class BuscarUsuarioServlet extends HttpServlet {
 
     private final UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/iniciarSesion.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoUsuariosB.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -30,38 +31,22 @@ public class IniciarSesionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/iniciarSesion.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoNombreUsuarios.jsp");
         String nombre = request.getParameter("nombre");
-        String password = request.getParameter("password");
-        boolean usuarioExistente = false;
 
         List<Usuario> listado = this.usuarioDAO.getAll();
+        List<Usuario> usuariosEncontrados = new ArrayList<>();
         request.setAttribute("listado", listado);
 
 
         //Primero comprobamos que el usuario exista realmente, comparando nombres y Contraseñas
         for (Usuario usuario : listado) {
-            try {
-                if (usuario.getNombre().equals(nombre) && usuario.getPassword().equals(UtilServlet.hashPassword(password))) {
-                    usuarioExistente = true;
-                }
-            } catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException(e);
+            if (usuario.getNombre().contains(nombre)){
+                usuariosEncontrados.add(usuario);
             }
         }
 
-        //Si existe, comprobamos si es un admin o no
-        if (usuarioExistente){
-            if (nombre.equals("admin")){
-                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoUsuariosB.jsp");
-            } else {
-                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/paginaUsuario.jsp");
-            }
-        } else {
-            request.setAttribute("error", "Nombre o Contraseña no válidos!");
-            System.out.println("Error");
-        }
-
+        request.setAttribute("usuariosEncontrados", usuariosEncontrados);
 
         dispatcher.forward(request, response);
     }
