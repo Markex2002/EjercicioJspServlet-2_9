@@ -15,6 +15,8 @@
 
 <%
   int codigo = Integer.parseInt(request.getParameter("codigo"));
+  String password =(String)request.getAttribute("password");
+  String nombre = (String) request.getAttribute("nombre");
 %>
 
 
@@ -22,11 +24,11 @@
   <form method="post" action="EditarUsuariosServlet">
     <div class="row body mt-2">
       <div class="col-md-6 align-self-center">Nombre</div>
-      <div class="col-md-6 align-self-center"><input type="text" name="nombre"/></div>
+      <div class="col-md-6 align-self-center"><input type="text" name="nombre" value="<%= nombre %>"/></div>
     </div>
     <div class="row body mt-2">
       <div class="col-md-6 align-self-center">Password</div>
-      <div class="col-md-6 align-self-center"><input type="text" name="password"/></div>
+      <div class="col-md-6 align-self-center"><input type="text" name="password" value="<%= password %>"/></div>
     </div>
     <div class="row body mt-2">
       <div class="col-md-6 align-self-center">id</div>

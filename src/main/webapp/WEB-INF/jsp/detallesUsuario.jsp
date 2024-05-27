@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Listado de Socios</title>
+    <title>Detalles Usuario</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="estilos.css" />
     <link rel="stylesheet" type="text/css" href="css/backtop.css" />
@@ -19,85 +19,32 @@
     <i class="arrow"></i><i class="arrow"></i>
 </a>
 
+<%
+    //Pedimos al usuario que hemos encontrado
+    Usuario usuario = (Usuario) request.getAttribute("usuarioEncontrado");
+%>
+
 <div class="container bg-white sticky-top">
-    <div class="row mb-2 border-bottom">
-        <div class="col-md-8 h1">Listado de Usuarios</div>
-        <form class="col-md-2 align-self-center" action="IniciarSesionServlet">
-            <button type="submit">Volver</button>
+    <h1>GestiBank</h1>
+
+    <hr>
+
+    <div id="<%=usuario.getUsuarioId()%>" class="row mt-2 body bg-white">
+        <div class="row align-self-center">Codigo: <%=usuario.getUsuarioId() %>
+        </div>
+        <div class="row align-self-center">Nombre: <%=usuario.getNombre() %>
+        </div>
+        <div class="row align-self-center">Password: <%=usuario.getPassword() %>
+        </div>
+
+        <form class="align-self-center my-4" action="ListarUsuariosServlet">
+            <button type="submit">ACEPTAR</button>
         </form>
-        <div class="col-md-2 align-self-center" ><form method="get" action="GrabarUsuariosServlet">
-            <input class="btn btn-primary"  type="submit" value="Crear Socio">
-        </form></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1 h3">ID</div>
-        <div class="col-md-3 h3">Nombre</div>
-        <div class="col-md-6 h3">Password</div>
-        <div class="col-md-2 h3 text-center">Operación</div>
     </div>
 </div>
 
-<div class="container bg-light">
-    <%
-    //                                                          v----RECOGER listado DE SOCIO DEL request
-    List<Usuario> listado = (List<Usuario>) request.getAttribute("listado");
-    // FOR-EACH SOBRE LA COLECCIÓN DE listado DE SOCIO
-    for (Usuario usuario : listado) {
-    %>
-    <div id="<%=usuario.getUsuarioId()%>" class="row mt-2 body">
-        <div class="col-md-1 align-self-center"><%=usuario.getUsuarioId() %>
-        </div>
-        <div class="col-md-3 align-self-center"><%=usuario.getNombre() %>
-        </div>
-        <div class="col-md-6 align-self-center"><%=usuario.getPassword() %>
-        </div>
 
-        <div class="col-md-2 align-self-center text-center">
-            <form class="d-inline" method="post" action="BorrarSociosServlet">
-                <input type="hidden" name="codigo" value="<%=usuario.getUsuarioId() %>"/>
-                <input class="btn btn-primary"  type="submit" value="Borrar">
-            </form>
-            <form class="d-inline" method="get" action="EditarUsuariosServlet">
-                <input type="hidden" name="codigo" value="<%=usuario.getUsuarioId() %>"/>
-                <input class="btn btn-primary"  type="submit" value="Editar">
-            </form>
-        </div>
-    </div>
-        <%
-      //v--- FIN DEL BUCLE FOR CON HTML INCRUSTADO
-    } // for
-    %>
 
-    <hr>
-
-    <form method="post" action="GrabarUsuariosServlet">
-        <h2>Crear Usuario</h2>
-        <div class="row body mt-2">
-            <div class="col-md-6 align-self-center">Nombre</div>
-            <div class="col-md-6 align-self-center"><input type="text" name="nombre"/></div>
-        </div>
-        <div class="row body mt-2">
-            <div class="col-md-6 align-self-center">password</div>
-            <div class="col-md-6 align-self-center"><input type="text" name="password"/></div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-md-6">
-                &nbsp;
-            </div>
-            <div class="col-md-6 align-self-center">
-                <input class="btn btn-primary" type="submit" value="Aceptar">
-            </div>
-        </div>
-    </form>
-
-    <hr>
-
-    <h2>Buscar Usuario</h2>
-    <form method="post" action="BuscarUsuarioServlet" class="row mt-2 my-4">
-        <label class="col-4"><input type="text" name="nombre"></label>
-        <input class="col-2" type="submit">
-    </form>
-</div>
 
 <script type="text/javascript" src="js/jquery.js" ></script>
 <script type="text/javascript">

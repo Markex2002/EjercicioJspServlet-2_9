@@ -21,13 +21,10 @@
 
 <div class="container bg-white sticky-top">
     <div class="row mb-2 border-bottom">
-        <div class="col-md-8 h1">Listado de Usuarios</div>
+        <div class="col-md-8 h1">Gestibank</div>
     </div>
     <div class="row">
-        <div class="col-md-1 h3">ID</div>
-        <div class="col-md-3 h3">Nombre</div>
-        <div class="col-md-6 h3">Password</div>
-        <div class="col-md-2 h3 text-center">Operación</div>
+        <div class="col-md-1 h3">Nombre</div>
     </div>
 </div>
 
@@ -39,21 +36,12 @@
     for (Usuario usuario : listado) {
     %>
     <div id="<%=usuario.getUsuarioId()%>" class="row mt-2 body">
-        <div class="col-md-1 align-self-center"><%=usuario.getUsuarioId() %>
+        <div class="col-md-1 align-self-center"><%=usuario.getNombre() %>
         </div>
-        <div class="col-md-3 align-self-center"><%=usuario.getNombre() %>
-        </div>
-        <div class="col-md-6 align-self-center"><%=usuario.getPassword() %>
-        </div>
-
         <div class="col-md-2 align-self-center text-center">
-            <form class="d-inline" method="post" action="BorrarSociosServlet">
+            <form class="d-inline" method="post" action="MostrarDetallesUsuariosServlet">
                 <input type="hidden" name="codigo" value="<%=usuario.getUsuarioId() %>"/>
-                <input class="btn btn-primary"  type="submit" value="Borrar">
-            </form>
-            <form class="d-inline" method="get" action="EditarUsuariosServlet">
-                <input type="hidden" name="codigo" value="<%=usuario.getUsuarioId() %>"/>
-                <input class="btn btn-primary"  type="submit" value="Editar">
+                <input class="btn btn-primary"  type="submit" value="DETALLES">
             </form>
         </div>
     </div>

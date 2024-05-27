@@ -46,7 +46,12 @@ public class BuscarUsuarioServlet extends HttpServlet {
             }
         }
 
-        request.setAttribute("usuariosEncontrados", usuariosEncontrados);
+        if (usuariosEncontrados.size() == 1){
+            request.setAttribute("usuarioEncontrado", usuariosEncontrados.get(0));
+            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/detallesUsuario.jsp");
+        } else if (usuariosEncontrados.size() > 1){
+            request.setAttribute("usuariosEncontrados", usuariosEncontrados);
+        }
 
         dispatcher.forward(request, response);
     }

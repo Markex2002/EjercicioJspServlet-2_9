@@ -10,28 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="739e422a-ce2f-4c56-a118-8ca65f865cf4" name="Changes" comment="Ajuste al dinamismo jquery y ListarSociosServlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/BuscarUsuarioServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoNombreUsuarios.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/MostrarDetallesUsuarioServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/detallesUsuario.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c6772c8b-6540-4209-826b-d2a24cd1ad52.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c6772c8b-6540-4209-826b-d2a24cd1ad52.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/dao/UsuarioDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/dao/UsuarioDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/EditarSociosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/EditarUsuariosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/GrabarSociosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/GrabarUsuariosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/IniciarSesionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/IniciarSesionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/UtilServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/UtilServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/usuarios_Servlet.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/usuarios_Servlet.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/borraSocio.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioEditarSocioB.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioEditarUsuarioB.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioSocio.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioSocioB.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioUsuarioB.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/grabaSocio.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/iniciarSesion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/iniciarSesion.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoSocios.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/BuscarUsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/BuscarUsuarioServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/EditarUsuariosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/EditarUsuariosServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/GrabarUsuariosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/GrabarUsuariosServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioEditarUsuarioB.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioEditarUsuarioB.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoNombreUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoNombreUsuarios.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoUsuariosB.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoUsuariosB.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/paginaAdmin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/paginaUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/paginaUsuario.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pideNumeroSocio.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +261,8 @@
       <workItem from="1716276990157" duration="32000" />
       <workItem from="1716295033496" duration="16000" />
       <workItem from="1716358687929" duration="7360000" />
-      <workItem from="1716448983893" duration="10401000" />
+      <workItem from="1716448983893" duration="11036000" />
+      <workItem from="1716791114579" duration="6439000" />
     </task>
     <task id="LOCAL-00001" summary="Commit inicial">
       <option name="closed" value="true" />
@@ -434,7 +424,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716366051626</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Ajuste al dinamismo jquery y ListarSociosServlet">
+      <option name="closed" value="true" />
+      <created>1716461130930</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1716461130930</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Ajuste al dinamismo jquery y ListarSociosServlet">
+      <option name="closed" value="true" />
+      <created>1716461142142</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716461142142</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,20 +471,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Ajuste al dinamismo jquery y ListarSociosServlet" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/GrabarUsuariosServlet.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/BuscarUsuarioServlet.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="UtilServlet.hashPassword(password)" />

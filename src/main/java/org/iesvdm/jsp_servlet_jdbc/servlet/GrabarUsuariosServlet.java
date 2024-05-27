@@ -84,7 +84,7 @@ public class GrabarUsuariosServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioUsuarioB.jsp");
                 request.setAttribute("error", "Nombre de usuario ya existe!");
             } else {
-                //PERSITO EL SOCIO NUEVO EN BBDD
+                //PERSISTO EL SOCIO NUEVO EN BBDD
                 this.usuarioDAO.create(usuarioInsertar);
 
                 //ESTABLEZCO EL ATRIBUTO DE newSocioID EN EL ÁMBITO DE REQUEST
@@ -105,6 +105,7 @@ public class GrabarUsuariosServlet extends HttpServlet {
             //EN request HAY UN Map<String, Object> DONDE PREPARO EL ATRIBUTO PARA LA VISTA JSP
             //                                  |
             //                                  V
+            listado = usuarioDAO.getAll();
             request.setAttribute("listado", listado);
 
         } else {

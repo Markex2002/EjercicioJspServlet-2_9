@@ -42,11 +42,20 @@ public class EditarUsuariosServlet extends HttpServlet {
         //MEDIANTE UN RequestDispatcher ----------------v
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioEditarUsuarioB.jsp");
 
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        List<Usuario> listado = usuarioDAO.getAll();
+
+        for (Usuario usuario : listado) {
+            if (usuario.getUsuarioId() == codigo){
+                request.setAttribute("nombre", usuario.getNombre());
+                request.setAttribute("password", usuario.getPassword());
+            }
+        }
+
         //SIEMPRE QUE HACEMOS UN RequestDispatcher DEBE MATERIALIZARSE EN UN forward
         //             --------------------------------------------------------|
         //            V      v---------v-----SE LE PASAN LOS OBJETOS request Y response PARA HACER EFECTIVA
         dispatcher.forward(request, response); // LA REDIRECCIÓN INTERNA EN EL SERVIDOR A UNA JSP O VISTA.
-
     }
 
 
